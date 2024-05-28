@@ -1,5 +1,11 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:nhg_finance_app/screens/broker/verifyborker.dart";
+import "package:nhg_finance_app/screens/coming_soon_screen/coming_soon.dart";
+
 import "package:nhg_finance_app/widget/allpages_background.dart";
+import "package:nhg_finance_app/widget/drawer.dart";
+import "package:nhg_finance_app/widget/popupmenu_appbar.dart";
 
 class Home_page extends StatelessWidget {
   const Home_page({super.key});
@@ -18,42 +24,16 @@ class Home_page extends StatelessWidget {
           child: AppBar(
             backgroundColor: const Color(0xff02343F),
 
-            // PopupMenu Button Section 
-            leading: PopupMenuButton(
-                      constraints: BoxConstraints(
-            minHeight: height*0.50,
-            minWidth: width*0.50
-                      ),
-                      position: PopupMenuPosition.under,
-                      color: const  Color(0xff02343F),
-                      elevation: 0,
-                      icon: const Icon(Icons.menu,color: Colors.white,),
-                      itemBuilder: (context) => [
-             PopupMenuItem(child: ListTile(
-                    leading: Image.asset("assets/popupmenu_icon/account.png",width: 20,),
-                    title: const Text("My Account",style: TextStyle(color: Colors.white,fontSize: 17),),
-                  ),),
-             PopupMenuItem(child:  ListTile(
-                    leading: Image.asset("assets/popupmenu_icon/funding.png",width: 20,),
-                    title: const Text("Funding",style: TextStyle(color: Colors.white,fontSize: 18),),
-                  ),),
-             PopupMenuItem(child: ListTile(
-                    leading: Image.asset("assets/popupmenu_icon/pamm.png",width: 20,),
-                    title: const Text("Pamm",style: TextStyle(color: Colors.white,fontSize: 18),),
-                  ),),
-             PopupMenuItem(child: ListTile(
-                    leading: Image.asset("assets/popupmenu_icon/signal.png",width: 20,),
-                    title: const Text("Signals",style: TextStyle(color: Colors.white,fontSize: 18),),
-                  ),),
-             PopupMenuItem(child: ListTile(
-                    leading: Image.asset("assets/popupmenu_icon/copytrading.png",width: 20,),
-                    title: const Text("Copy Trading",style: TextStyle(color: Colors.white,fontSize: 18),),
-                  ),),
-             PopupMenuItem(child: ListTile(
-                    leading: Image.asset("assets/popupmenu_icon/education.png",width: 20,),
-                    title: const  Text("Education",style: TextStyle(color: Colors.white,fontSize: 18),),
-                  ),),
-                    ],),
+           leading: Builder(builder: (context) {
+            return IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                icon: const Icon(
+                  Icons.menu,
+                  color: Colors.white,
+                ));
+          }),
              actions: [
 
               // left arrow button
@@ -63,17 +43,20 @@ class Home_page extends StatelessWidget {
 
                 // home button 
                 IconButton(
-                onPressed: (){}, icon: Image.asset("assets/icon/home.png",
+                onPressed: (){
+                  Get.to(Home_page());
+                }, icon: Image.asset("assets/icon/home.png",
                 height: 20,width: 30,)),
 
                 // person icon button
                 IconButton(
-                onPressed: (){}, icon: Image.asset("assets/icon/icon_person.png",
+                onPressed: (){
+                }, icon: Image.asset("assets/icon/icon_person.png",
                 height: 20,width: 30,)),
             ],
           ),),
           backgroundColor: Colors.transparent,
-
+          drawer: MyDrawer(),
           // body Section
           body: Center(
             child: Column(
@@ -83,7 +66,9 @@ class Home_page extends StatelessWidget {
           
                 // NEWS BUTTON TO NAVIGATE NEWS FEED
                 GestureDetector(
-                      onTap: (){},
+                      onTap: (){
+                        Get.to(Coming_Soon());
+                      },
                        child: Container(
                         margin: const EdgeInsets.all(20),
                         height: height*0.06,
@@ -105,7 +90,9 @@ class Home_page extends StatelessWidget {
                      // PAMM BUTTON TO NAVIGATE TO PAMM
           
                      GestureDetector(
-                      onTap: (){},
+                      onTap: (){
+                        Get.to(Verify_Broker());
+                      },
                        child: Container(
                         margin: const EdgeInsets.all(20),
                         height: height*0.06,
@@ -127,7 +114,9 @@ class Home_page extends StatelessWidget {
                      // SIGNALS BUTTON TO NAVIGATE SINGLE PAGE/FEED
           
                      GestureDetector(
-                      onTap: (){},
+                      onTap: (){
+                        Get.to(Coming_Soon());
+                      },
                        child: Container(
                         margin: const EdgeInsets.all(20),
                         height: height*0.06,
@@ -149,7 +138,9 @@ class Home_page extends StatelessWidget {
                      // COPY_TRADING BUTTON TO NAVIGATE COPY_TRADING PAGE/FEED
           
                      GestureDetector(
-                      onTap: (){},
+                      onTap: (){
+                        Get.to(Coming_Soon());
+                      },
                        child: Container(
                         margin: const EdgeInsets.all(20),
                         height: height*0.06,
@@ -171,7 +162,9 @@ class Home_page extends StatelessWidget {
                      // EDUCATION BUTTON TO NAVIGATE EDUCATION PAGE/FEED
           
                      GestureDetector(
-                      onTap: (){},
+                      onTap: (){
+                        Get.to(Coming_Soon());
+                      },
                        child: Container(
                         margin: const EdgeInsets.all(20),
                         height: height*0.06,

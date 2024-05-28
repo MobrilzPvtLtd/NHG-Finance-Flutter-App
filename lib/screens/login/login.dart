@@ -73,11 +73,11 @@ Logincontroller logincontroller = Get.put(Logincontroller());
                       Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: TextFormField(
-                          validator: (emailvalue) {
-                            if(emailvalue!.isEmpty){
-                              Get.snackbar("Email Field ", "Email Field is Empty Please Enter Email ID",backgroundColor: Colors.white);
-                            }
-                          },
+                          // validator: (emailvalue) {
+                          //   if(emailvalue!.isEmpty){
+                          //     Get.snackbar("Email Field ", "Email Field is Empty Please Enter Email ID",backgroundColor: Colors.white);
+                          //   }
+                          // },
                           // Email TexteditingController
                           controller: Email,
                           keyboardType: TextInputType.emailAddress,
@@ -111,13 +111,13 @@ Logincontroller logincontroller = Get.put(Logincontroller());
 
                           // Validator 
 
-                          validator: (passwordvalue) {
-                            if(passwordvalue!.isEmpty){
-                               Get.snackbar("Password Field", "Password Field is Empty Please Enter Password",backgroundColor: Colors.white);
-                            }if (passwordvalue.length<12) {
-                              Get.snackbar("Password Field", "Minimum length password is 12",backgroundColor: Colors.white);
-                            }
-                          },
+                          // validator: (passwordvalue) {
+                          //   if(passwordvalue!.isEmpty){
+                          //      Get.snackbar("Password Field", "Password Field is Empty Please Enter Password",backgroundColor: Colors.white);
+                          //   }if (passwordvalue.length<12) {
+                          //     Get.snackbar("Password Field", "Minimum length password is 12",backgroundColor: Colors.white);
+                          //   }
+                          // },
 
                           // decoration
                           decoration: InputDecoration(
@@ -140,8 +140,9 @@ Logincontroller logincontroller = Get.put(Logincontroller());
                       // Login Button 
                      GestureDetector(
                       onTap: (){
+                        Get.to(const Home_page());
                         // _formkey.currentState!.validate();
-                        logincontroller.loginData(Email.text, Password.text);
+                        // logincontroller.loginData(Email.text, Password.text);
                       },
                        child: Container(
                         margin: const EdgeInsets.all(20),
@@ -183,7 +184,7 @@ Logincontroller logincontroller = Get.put(Logincontroller());
                           width: width*0.50,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Color(0xff02343F)
+                            color: const Color(0xff02343F)
                           ),
                           child: const Center(
                             child: Text("Recover Password",
